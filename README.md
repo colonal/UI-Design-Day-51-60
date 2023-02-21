@@ -1,16 +1,15 @@
-# ui_design_day_51_60
+# Flutter UI Design Day 51-60
 
-A new Flutter project.
+## Development Setup
+Clone the repository and run the following commands:
+```
+flutter pub get
+flutter run
+```
 
-## Getting Started
+# ScreenShot
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Day 51 - <a href="https://www.uplabs.com/posts/best-trending-nft-marketplace-mobile-app-ui-ux-design">NFT Marketplace</a>
+<img src="screenshot/day51/1.png" height="300em"/> <img src="screenshot/day51/2.png" height="300em"/>
+<img src="screenshot/day51/3.png" height="300em"/> <img src="screenshot/day51/4.gif" height="300em"/>
