@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'day51/screen/starte_screen.dart';
+import 'package:ui_design_day_51_60/day52/page/starte_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Day51StareScreen(),
+      home: const Day52StareScreen(),
     );
   }
 }
