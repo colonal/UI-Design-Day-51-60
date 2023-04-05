@@ -37,3 +37,9 @@ flutter run
 ## Day 55 - <a href="https://www.figma.com/community/file/1212649829764046223">Food ordering</a>
 <img src="screenshot/day55/1.png" height="300em"/> <img src="screenshot/day55/2.png" height="300em"/>
  <img src="screenshot/day55/3.png" height="300em"/> <img src="screenshot/day55/4.gif" height="300em"/>
+
+<br>
+
+## Day 56 - <a href="https://www.figma.com/community/file/1129700425307703995">NFT Wallet App</a>
+<img src="screenshot/day56/1.png" height="300em"/> <img src="screenshot/day56/2.png" height="300em"/>
+ <img src="screenshot/day56/3.png" height="300em"/>

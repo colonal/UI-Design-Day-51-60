@@ -32,15 +32,12 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
+  flutter_charts: ^0.5.1
+  flutter_svg: ^2.0.4
   font_awesome_flutter: ^10.4.0
+  syncfusion_flutter_charts: ^21.1.38
 
 dev_dependencies:
-
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
@@ -62,6 +59,7 @@ flutter:
     - assets/images/day53/
     - assets/images/day54/
     - assets/images/day55/
+    - assets/images/day56/
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

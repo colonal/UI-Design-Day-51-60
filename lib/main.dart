@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'day55/screen/start_screen.dart';
+import 'day56/screen/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const StartScreenDay55(),
+      home: const StartScreenDay56(),
     );
   }
 }
