@@ -49,3 +49,9 @@ flutter run
 ## Day 57 - <a href="https://www.figma.com/community/file/1076531551797581534">Messenger App</a>
 <img src="screenshot/day57/1.png" height="300em"/> <img src="screenshot/day57/2.png" height="300em"/>
  <img src="screenshot/day57/3.png" height="300em"/>
+ 
+<br>
+
+## Day 58 - <a href="https://www.figma.com/community/file/1116430751177905000">Nike Shoes App</a>
+<img src="screenshot/day58/1.png" height="300em"/> <img src="screenshot/day58/2.png" height="300em"/>
+ <img src="screenshot/day58/3.gif" height="300em"/>
