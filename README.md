@@ -55,3 +55,9 @@ flutter run
 ## Day 58 - <a href="https://www.figma.com/community/file/1116430751177905000">Nike Shoes App</a>
 <img src="screenshot/day58/1.png" height="300em"/> <img src="screenshot/day58/2.png" height="300em"/>
  <img src="screenshot/day58/3.gif" height="300em"/>
+ 
+<br>
+
+## Day 59 - <a href="https://www.figma.com/community/file/963797805297200933">Mindfulness and Meditation</a>
+<img src="screenshot/day59/1.png" height="300em"/> <img src="screenshot/day59/2.png" height="300em"/>
+ <img src="screenshot/day59/3.png" height="300em"/>
