@@ -57,11 +57,14 @@ class BattlegroundScreen extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(7),
                                 ),
                                 child: const Center(
-                                  child: Text(
-                                    "V/S",
-                                    style: TextStyle(
-                                      color: Color(0xFF757575),
-                                      fontWeight: FontWeight.bold,
+                                  child: FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: Text(
+                                      "V/S",
+                                      style: TextStyle(
+                                        color: Color(0xFF757575),
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -76,12 +79,13 @@ class BattlegroundScreen extends StatelessWidget {
                 ),
               ),
               Container(
-                height: size.height * .15,
+                height: 100,
                 width: size.width * .9,
                 alignment: Alignment.center,
                 child: Row(
                   children: [
                     _showPlayer(size, player, playerImage, true),
+                    SizedBox(width: size.width * .1),
                     _showPlayer(size, you, youImage, false),
                   ],
                 ),
@@ -117,72 +121,81 @@ class BattlegroundScreen extends StatelessWidget {
 
   Widget _showPlayer(Size size, Pokemon play, String image, bool isLeft) {
     return SizedBox(
-      width: size.width * .45,
+      width: size.width * .4,
       child: Column(
         crossAxisAlignment:
             isLeft ? CrossAxisAlignment.start : CrossAxisAlignment.end,
         children: [
           isLeft
-              ? Row(
-                  children: [
-                    CircleAvatar(
-                      backgroundImage: NetworkImage(image),
-                    ),
-                    const SizedBox(width: 10),
-                    Text(
-                      play.name,
-                      style: const TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
-                    )
-                  ],
-                )
-              : Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      play.name,
-                      style: const TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(width: 10),
-                    CircleAvatar(
-                      backgroundImage: NetworkImage(image),
-                    ),
-                  ],
-                ),
+              ? FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Row(
+                    children: [
+                      CircleAvatar(
+                        backgroundImage: NetworkImage(image),
+                      ),
+                      const SizedBox(width: 10),
+                      Text(
+                        play.name,
+                        style: const TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
+              )
+              : FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        play.name,
+                        style: const TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(width: 10),
+                      CircleAvatar(
+                        backgroundImage: NetworkImage(image),
+                      ),
+                    ],
+                  ),
+              ),
           const SizedBox(height: 10),
-          Row(
-            mainAxisAlignment:
-                isLeft ? MainAxisAlignment.start : MainAxisAlignment.end,
-            children: List.generate(
-              10,
-              (index) {
-                bool show = isLeft
-                    ? (index >= play.evolution)
-                    : (index <= 9 - play.evolution);
-                return Transform.rotate(
-                  angle: (isLeft ? 15 : -15) * pi / 180,
-                  child: Container(
-                    height: 30,
-                    width: 12,
-                    margin: const EdgeInsets.symmetric(horizontal: 2),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(4),
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        stops: const [0, 2],
-                        colors: show
-                            ? [Colors.grey[400]!, Colors.grey[800]!]
-                            : [
-                                Colors.white,
-                                play.color,
-                              ],
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Row(
+              mainAxisAlignment:
+                  isLeft ? MainAxisAlignment.start : MainAxisAlignment.end,
+              children: List.generate(
+                10,
+                (index) {
+                  bool show = isLeft
+                      ? (index >= play.evolution)
+                      : (index <= 9 - play.evolution);
+                  return Transform.rotate(
+                    angle: (isLeft ? 15 : -15) * pi / 180,
+                    child: Container(
+                      height: 30,
+                      width: 12,
+                      margin: const EdgeInsets.symmetric(horizontal: 2),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(4),
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          stops: const [0, 2],
+                          colors: show
+                              ? [Colors.grey[400]!, Colors.grey[800]!]
+                              : [
+                                  Colors.white,
+                                  play.color,
+                                ],
+                        ),
                       ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           )
         ],
