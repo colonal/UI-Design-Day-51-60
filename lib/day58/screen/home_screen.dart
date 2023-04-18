@@ -50,20 +50,20 @@ class StartScreenDay58 extends StatelessWidget {
                     Color(0xFFECB903),
                   ],
                 ),
+                SvgPicture.asset(
+                  "assets/images/day58/shoes.svg",
+                  color: Colors.white,
+                  width: 60,
+                  height: 18,
+                ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SvgPicture.asset(
-                      "assets/images/day58/shoes.svg",
-                      color: Colors.white,
-                      width: 60,
-                      height: 18,
-                    ),
                     Image.asset(
                       "assets/images/day58/1.png",
-                      width: size.width * .9,
-                      height: size.height* .5,
-                      fit: BoxFit.cover,
+                      width: size.width,
+                    height: size.height * .5,
+                      fit: BoxFit.scaleDown,
                     ),
                     Expanded(
                       child: FittedBox(
@@ -115,16 +115,19 @@ class StartScreenDay58 extends StatelessWidget {
                                   ),
                                   child: MaterialButton(
                                     onPressed: () {
-                                      Navigator.of(context).push(MaterialPageRoute(
+                                      Navigator.of(context)
+                                          .push(MaterialPageRoute(
                                         builder: (context) =>
                                             const CollectionsScreen(),
                                       ));
                                     },
                                     shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(25)),
+                                        borderRadius:
+                                            BorderRadius.circular(25)),
                                     color: const Color(0xFFECB903),
                                     child: const Padding(
-                                      padding: EdgeInsets.symmetric(vertical: 13),
+                                      padding:
+                                          EdgeInsets.symmetric(vertical: 13),
                                       child: Text(
                                         "Get Started",
                                         style: TextStyle(

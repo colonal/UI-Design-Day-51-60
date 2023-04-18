@@ -48,18 +48,18 @@ class _CollectionsScreenState extends State<CollectionsScreen> {
         width: size.width,
         height: size.height,
         color: Colors.white,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox(
-                height: size.height * .4,
-                child: Column(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
                   children: [
                     _selectShose(),
                     const SizedBox(height: 20),
-                    Expanded(
+                    SizedBox(
+                      height: 100,
                       child: Transform.translate(
                           offset: const Offset(0, 20),
                           child: Image.asset(
@@ -94,9 +94,9 @@ class _CollectionsScreenState extends State<CollectionsScreen> {
                     ),
                   ],
                 ),
-              ),
-              _buildInfoWidget(size),
-            ],
+                _buildInfoWidget(size),
+              ],
+            ),
           ),
         ),
       ),
@@ -104,133 +104,129 @@ class _CollectionsScreenState extends State<CollectionsScreen> {
   }
 
   Widget _buildInfoWidget(Size size) {
-    return Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          const FittedBox(
-            fit: BoxFit.scaleDown,
-            child: Text(
-              "Zoom Freak",
-              style: TextStyle(
-                fontSize: 45,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF122A2F),
-              ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        const FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            "Zoom Freak",
+            style: TextStyle(
+              fontSize: 45,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF122A2F),
             ),
           ),
-          const SizedBox(height: 7),
-          const FittedBox(
-            fit: BoxFit.scaleDown,
-            child: Text(
-              "Basketball Shoes",
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.w500,
-                color: Color(0xFF122A2F),
-              ),
+        ),
+        const SizedBox(height: 7),
+        const FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            "Basketball Shoes",
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.w500,
+              color: Color(0xFF122A2F),
             ),
           ),
-          const SizedBox(height: 10),
-          const Flexible(
-            child: Text(
-              """There has never been a player like Giannis. His freakishly athletic game combines massive strides,""",
-              style: TextStyle(
-                fontSize: 17,
-                fontWeight: FontWeight.w400,
-                color: Color(0xFF122A2F),
-              ),
-            ),
+        ),
+        const SizedBox(height: 10),
+        const Text(
+          """There has never been a player like Giannis. His freakishly athletic game combines massive strides,""",
+          style: TextStyle(
+            fontSize: 17,
+            fontWeight: FontWeight.w400,
+            color: Color(0xFF122A2F),
           ),
-          const SizedBox(height: 10),
-          FittedBox(
-            fit: BoxFit.scaleDown,
-            child: SizedBox(
-              width: size.width,
-              height: 80,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: FittedBox(
-                      fit: BoxFit.scaleDown,
-                      alignment: Alignment.centerLeft,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text(
-                            "Price",
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w500,
-                              color: Color(0xFF122A2F),
-                            ),
+        ),
+        const SizedBox(height: 10),
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          child: SizedBox(
+            width: size.width,
+            height: 80,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text(
+                          "Price",
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xFF122A2F),
                           ),
-                          Text(
-                            "\$180",
-                            style: TextStyle(
-                              fontSize: 45,
-                              fontWeight: FontWeight.w800,
-                              color: Color(0xFF122A2F),
-                            ),
+                        ),
+                        Text(
+                          "\$180",
+                          style: TextStyle(
+                            fontSize: 45,
+                            fontWeight: FontWeight.w800,
+                            color: Color(0xFF122A2F),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
-                  Expanded(
-                    
-                    child: FittedBox(
-                      fit: BoxFit.scaleDown,
-                      alignment: Alignment.centerRight,
-                      child: Row(
-                        children: [
-                          _buildCircleWidget(
-                            colors: [
-                              const Color(0xa9122A2F),
-                              const Color(0xFF122A2F),
-                            ],
-                            child: Center(
-                              child: SvgPicture.asset(
-                                  "assets/images/day58/icon1.svg"),
-                            ),
+                ),
+                Expanded(
+                  
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    alignment: Alignment.centerRight,
+                    child: Row(
+                      children: [
+                        _buildCircleWidget(
+                          colors: [
+                            const Color(0xa9122A2F),
+                            const Color(0xFF122A2F),
+                          ],
+                          child: Center(
+                            child: SvgPicture.asset(
+                                "assets/images/day58/icon1.svg"),
                           ),
-                          const SizedBox(width: 10),
-                          _buildCircleWidget(
-                            colors: [
-                              const Color(0xFF2DB398),
-                              const Color(0x9F00261F),
-                            ],
-                            child: Stack(
-                              children: [
-                                Center(
-                                  child: SvgPicture.asset(
-                                      "assets/images/day58/icon2.svg"),
-                                ),
-                                Transform.translate(
-                                  offset: const Offset(-10, -15),
-                                  child: const Align(
-                                    alignment: Alignment.centerRight,
-                                    child: CircleAvatar(
-                                      radius: 6,
-                                      backgroundColor: Color(0xFFECB903),
-                                    ),
+                        ),
+                        const SizedBox(width: 10),
+                        _buildCircleWidget(
+                          colors: [
+                            const Color(0xFF2DB398),
+                            const Color(0x9F00261F),
+                          ],
+                          child: Stack(
+                            children: [
+                              Center(
+                                child: SvgPicture.asset(
+                                    "assets/images/day58/icon2.svg"),
+                              ),
+                              Transform.translate(
+                                offset: const Offset(-10, -15),
+                                child: const Align(
+                                  alignment: Alignment.centerRight,
+                                  child: CircleAvatar(
+                                    radius: 6,
+                                    backgroundColor: Color(0xFFECB903),
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  )
-                ],
-              ),
+                  ),
+                )
+              ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
