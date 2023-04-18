@@ -18,7 +18,7 @@ flutter run
 
 ## Day 52 - <a href="https://www.uplabs.com/posts/modern-creative-fitness-workout-mobile-app-ui-ux-design-ui-kit">Fitness Workout</a>
 <img src="screenshot/day52/1.png" height="300em"/> <img src="screenshot/day52/2.png" height="300em"/>
-<img src="screenshot/day52/3.png" height="300em"/> <img src="screenshot/day52/1.gif" height="300em"/> <img src="screenshot/day52/2.gif" height="300em"/>
+<img src="screenshot/day52/3.png" height="300em"/> <img src="screenshot/day52/1.gif" height="300em"/>
 
 <br>
 
@@ -61,3 +61,9 @@ flutter run
 ## Day 59 - <a href="https://www.figma.com/community/file/963797805297200933">Mindfulness and Meditation</a>
 <img src="screenshot/day59/1.png" height="300em"/> <img src="screenshot/day59/2.png" height="300em"/>
  <img src="screenshot/day59/3.png" height="300em"/>
+
+<br>
+
+## Day 60 - <a href="https://www.figma.com/community/file/1214454163400101203">Pokemon Gaming</a>
+<img src="screenshot/day60/1.png" height="300em"/> <img src="screenshot/day60/2.png" height="300em"/>
+ <img src="screenshot/day60/3.png" height="300em"/> <img src="screenshot/day60/4.gif" height="300em"/>
