@@ -84,8 +84,8 @@ class MarketWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 20.0),
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
+      gridDelegate:  const SliverGridDelegateWithMaxCrossAxisExtent(
+        maxCrossAxisExtent: 250,
         crossAxisSpacing: 20.0,
         mainAxisSpacing: 20.0,
         mainAxisExtent: 250,

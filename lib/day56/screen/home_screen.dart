@@ -20,16 +20,17 @@ class _StartScreenDay56State extends State<StartScreenDay56> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: const Color(0xFF0F111E),
       body: BakgroundWidget(child: bottomBarItems[_selectItem].child),
-      floatingActionButton: _buildfloatingActionButton(),
+      floatingActionButton: _buildfloatingActionButton(size),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: _buildBottomAppBar(),
+      bottomNavigationBar: _buildBottomAppBar(size),
     );
   }
 
-  Widget _buildfloatingActionButton() {
+  Widget _buildfloatingActionButton(Size size) {
     return Transform.translate(
       offset: const Offset(0, 10),
       child: InkWell(
@@ -44,8 +45,8 @@ class _StartScreenDay56State extends State<StartScreenDay56> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              width: 70,
-              height: 70,
+              width: size.width*.15,
+              height: size.width*.15,
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 gradient: LinearGradient(
@@ -78,34 +79,40 @@ class _StartScreenDay56State extends State<StartScreenDay56> {
     );
   }
 
-  Widget _buildBottomAppBar() {
-    return BottomAppBar(
-      notchMargin: 0,
-      padding: EdgeInsets.zero,
-      height: 75,
-      color: Colors.transparent,
-      child: ClipRRect(
-        borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(30)),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 35, sigmaY: 35),
-          child: Container(
-            clipBehavior: Clip.antiAlias,
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey.withOpacity(0.2)),
-              borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(30)),
-              gradient: LinearGradient(
-                colors: [
-                  const Color(0xFF444444).withOpacity(.1),
-                  const Color(0xFF515151).withOpacity(.1)
-                ],
+  Widget _buildBottomAppBar(Size size) {
+    return FittedBox(
+      fit: BoxFit.scaleDown,
+      child: SizedBox(
+        width: size.width,
+        child: BottomAppBar(
+          notchMargin: 0,
+          padding: EdgeInsets.zero,
+          height: 75,
+          color: Colors.transparent,
+          child: ClipRRect(
+            borderRadius:
+                      const BorderRadius.vertical(top: Radius.circular(30)),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 35, sigmaY: 35),
+              child: Container(
+                clipBehavior: Clip.antiAlias,
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey.withOpacity(0.2)),
+                  borderRadius:
+                      const BorderRadius.vertical(top: Radius.circular(30)),
+                  gradient: LinearGradient(
+                    colors: [
+                      const Color(0xFF444444).withOpacity(.1),
+                      const Color(0xFF515151).withOpacity(.1)
+                    ],
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: _buildItemsBottomAppBar(),
+                ),
               ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: _buildItemsBottomAppBar(),
             ),
           ),
         ),

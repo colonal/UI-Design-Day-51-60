@@ -16,89 +16,107 @@ class TokensWidget extends StatelessWidget {
       separatorBuilder: (context, index) =>
           const Divider(color: Colors.white30),
       itemBuilder: (context, index) {
-        return SizedBox(
-          height: 50,
-          child: Row(
-            children: [
-              Row(
+        return LayoutBuilder(
+          builder: (context,constraints) {
+            return SizedBox(
+              height: 50,
+              child: Row(
                 children: [
-                  Image.asset(
-                    tokens[index].image,
-                    width: 45,
-                    height: 45,
-                    fit: BoxFit.fill,
-                  ),
-                  const SizedBox(width: 10),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        tokens[index].subName,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 6),
-                      Text(
-                        tokens[index].name,
-                        style: const TextStyle(
-                          color: Color(0xFFA0A0A0),
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      )
-                    ],
-                  ),
-                ],
-              ),
-              Expanded(
-                child:  LayoutBuilder(
-                  builder: (BuildContext context,BoxConstraints constraints) {
-                    return FittedBox(
+                  SizedBox(
+                    width: constraints.maxWidth*.3,
+                    child: FittedBox(
                       fit: BoxFit.scaleDown,
+                      alignment: Alignment.centerLeft,
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(
-                            width: constraints.maxWidth *.5,
-                            height: constraints.maxHeight,
-                            child: Center(child: DigitalCurrencyChart(tokens: tokens[index]))),
+                          Image.asset(
+                            tokens[index].image,
+                            width: 45,
+                            height: 45,
+                            fit: BoxFit.fill,
+                          ),
+                          const SizedBox(width: 10),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                tokens[index].subName,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(height: 6),
+                              Text(
+                                tokens[index].name,
+                                style: const TextStyle(
+                                  color: Color(0xFFA0A0A0),
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              )
+                            ],
+                          ),
                         ],
                       ),
-                    );
-                  }
-                ),
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    tokens[index].prise,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const SizedBox(height: 6),
-                  Text(
-                    tokens[index].rate,
-                    style: TextStyle(
-                      color: tokens[index].state == TokensState.up
-                          ? const Color(0xFF0AFF96)
-                          : const Color(0xFFFF002E),
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
+                  Expanded(
+                    child:  LayoutBuilder(
+                      builder: (BuildContext context,BoxConstraints constraints) {
+                        return FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: constraints.maxWidth *.5,
+                                height: constraints.maxHeight,
+                                child: Center(child: DigitalCurrencyChart(tokens: tokens[index]))),
+                            ],
+                          ),
+                        );
+                      }
                     ),
-                  )
+                  ),
+                  SizedBox(
+                     width: constraints.maxWidth*.3,
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      alignment: Alignment.centerRight,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            tokens[index].prise,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const SizedBox(height: 6),
+                          Text(
+                            tokens[index].rate,
+                            style: TextStyle(
+                              color: tokens[index].state == TokensState.up
+                                  ? const Color(0xFF0AFF96)
+                                  : const Color(0xFFFF002E),
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
-            ],
-          ),
+            );
+          }
         );
       },
     );
