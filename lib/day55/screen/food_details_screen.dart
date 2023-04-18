@@ -57,12 +57,15 @@ class FoodDetailsScreen extends StatelessWidget {
           ),
           child: MaterialButton(
             onPressed: () {},
-            child: const Text(
-              "Buy now",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 26,
-                fontWeight: FontWeight.w700,
+            child: const FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                "Buy now",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 26,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
             ),
           ),

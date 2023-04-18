@@ -51,10 +51,10 @@ class _FoodItemWidgetState extends State<FoodItemWidget> with SingleTickerProvid
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
-                height: constraints.maxWidth,
+                height: constraints.maxHeight *.65,
                 width: constraints.maxWidth * .9,
                 padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
                 child: Stack(
@@ -129,12 +129,15 @@ class _FoodItemWidgetState extends State<FoodItemWidget> with SingleTickerProvid
                 ),
               ),
               Container(
-                height: constraints.maxHeight * .1,
+                height: constraints.maxHeight * .13,
+                width: constraints.maxWidth,
                 padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Flexible(
+                    FittedBox(
+                      fit: BoxFit.scaleDown,
                       child: Text(
                         "₹${widget.food.price}",
                         style: const TextStyle(

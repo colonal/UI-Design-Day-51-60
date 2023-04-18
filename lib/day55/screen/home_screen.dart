@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(height: 50),
                 const BennerWidget(),
                 const SizedBox(height: 25),
-                _buildDisplayOffer(),
+                _buildDisplayOffer(size),
                 const SizedBox(height: 12),
                 _buildFoods(),
               ],
@@ -37,8 +37,9 @@ class HomeScreen extends StatelessWidget {
 
   Widget _buildFoods() {
     return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
+      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+        maxCrossAxisExtent: 250,
+        // crossAxisCount: 2,
         crossAxisSpacing: 20.0,
         mainAxisSpacing: 20.0,
         mainAxisExtent: 260,
@@ -50,66 +51,71 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildDisplayOffer() {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            FittedBox(
-              fit: BoxFit.scaleDown,
-              child: Text(
-                "Biryani",
-                style: TextStyle(
-                  color: Color(0xFF22222E),
-                  fontSize: 30,
-                  fontWeight: FontWeight.w800,
+  Widget _buildDisplayOffer(Size size) {
+    return LayoutBuilder(builder: (context, constraints) {
+      return  Row(
+              children: [
+                SizedBox(
+                  width: constraints.maxWidth * .5,
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      children: const [
+                        Text(
+                          "Biryani",
+                          style: TextStyle(
+                            color: Color(0xFF22222E),
+                            fontSize: 30,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                        Text(
+                          "70 Offers",
+                          style: TextStyle(
+                            color: Color(0xFF22222E),
+                            fontSize: 24,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            FittedBox(
-              fit: BoxFit.scaleDown,
-              child: Text(
-                "#Veg",
-                style: TextStyle(
-                  color: Color(0xFF4D65F0),
-                  fontSize: 24,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 10),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            FittedBox(
-              fit: BoxFit.scaleDown,
-              child: Text(
-                "70 Offers",
-                style: TextStyle(
-                  color: Color(0xFF22222E),
-                  fontSize: 24,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
-            FittedBox(
-              fit: BoxFit.scaleDown,
-              child: Text(
-                "#Non-Veg",
-                style: TextStyle(
-                  color: Color(0xFFEB6139),
-                  fontSize: 24,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ],
-    );
+                SizedBox(
+                  width: constraints.maxWidth * .5,
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    alignment: Alignment.centerRight,
+                    child: Column(
+                      children: const [
+                        Text(
+                          "#Veg",
+                          style: TextStyle(
+                            color: Color(0xFF4D65F0),
+                            fontSize: 24,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            "#Non-Veg",
+                            style: TextStyle(
+                              color: Color(0xFFEB6139),
+                              fontSize: 24,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            );
+          
+    });
   }
 
   Widget _buildTopBar() {

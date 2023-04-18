@@ -22,10 +22,12 @@ class _StartButtonWidgetState extends State<StartButtonWidget> {
 
     return Container(
       height: size.height * 0.2,
-      padding: EdgeInsets.symmetric(horizontal: size.width * 0.1),
+      padding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
+      // margin: EdgeInsets.symmetric(horizontal: 30),
       child: Center(
         child: Container(
           height: size.height * 0.13,
+          padding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
           decoration: BoxDecoration(
             color: const Color(0xffEA95D0),
             borderRadius: BorderRadius.circular(50),
@@ -36,7 +38,8 @@ class _StartButtonWidgetState extends State<StartButtonWidget> {
               colors: [ Colors.white.withOpacity(0.8),const Color(0xffEA95D0)],
             ),
           ),
-          child: Center(
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
