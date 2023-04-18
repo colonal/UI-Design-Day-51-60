@@ -48,25 +48,44 @@ class _CartCoffeeScreenState extends State<CartCoffeeScreen> {
                 children: [
                   const MySeparator(), 
                   const SizedBox(height: 9),
-                  ClipPath(
-                    clipper: CouponCodeClipper(),
-                    child: Container(
-                      color: const Color(0xff38232A),
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      height: 40,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
-                          Text(
-                            "Apply Coupon Code",
-                            style:
-                                TextStyle(color: Color(0xffEFE3C8), fontSize: 15),
+                  LayoutBuilder(
+                    builder: (context,constraints) {
+                      return FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: SizedBox(
+                          height: 40,
+                          width: constraints.maxWidth,
+                          child: ClipPath(
+                            clipper: CouponCodeClipper(),
+                            child: Container(
+                              color: const Color(0xff38232A),
+                              padding: const EdgeInsets.symmetric(horizontal: 20),
+                              
+                              child: SizedBox(
+                                width: constraints.maxWidth,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: const [
+                                    Expanded(
+                                      child: FittedBox(
+                                        fit: BoxFit.scaleDown,
+                                        child: Text(
+                                          "Apply Coupon Code",
+                                          style:
+                                              TextStyle(color: Color(0xffEFE3C8), fontSize: 15),
+                                        ),
+                                      ),
+                                    ),
+                                    Icon(Icons.arrow_forward_ios,
+                                        color: Colors.white, size: 18),
+                                  ],
+                                ),
+                              ),
+                            ),
                           ),
-                          Icon(Icons.arrow_forward_ios,
-                              color: Colors.white, size: 18),
-                        ],
-                      ),
-                    ),
+                        ),
+                      );
+                    }
                   ),
                   const SizedBox(height: 12),
                   Row(

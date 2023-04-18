@@ -114,27 +114,31 @@ class _CaffeeDetailsScreenState extends State<CaffeeDetailsScreen> {
     return Positioned(
       bottom: 0,
       child: Container(
+        color:  const Color(0xff362C36),
         width: size.width,
         height: 68,
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
         child: Row(
           children: [
-            Text.rich(
-              TextSpan(
-                text: "Price\n",
-                style: const TextStyle(
-                  fontSize: 14,
-                  color: Color(0xffefe3c8),
-                ),
-                children: [
-                  TextSpan(
-                    text: "₹ ${widget.coffee.price}",
-                    style: const TextStyle(
-                      fontSize: 20,
-                      color: Color(0xffefe3c8),
-                    ),
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text.rich(
+                TextSpan(
+                  text: "Price\n",
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: Color(0xffefe3c8),
                   ),
-                ],
+                  children: [
+                    TextSpan(
+                      text: "₹ ${widget.coffee.price}",
+                      style: const TextStyle(
+                        fontSize: 20,
+                        color: Color(0xffefe3c8),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             const SizedBox(width: 30),

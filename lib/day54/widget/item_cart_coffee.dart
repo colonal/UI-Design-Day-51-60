@@ -50,100 +50,118 @@ class _ItemCartCoffeeState extends State<ItemCartCoffee> {
       child: Container(
         height: 96,
         margin: const EdgeInsets.symmetric(horizontal: 20),
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         decoration: BoxDecoration(
           color: const Color(0xff362C36),
           borderRadius: BorderRadius.circular(15),
         ),
-        child: Row(
-          children: [
-            Center(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(15),
-                child: Image.asset(
-                  widget.cartCoffee.coffee.image,
-                  width: 72,
-                  height: 72,
-                  fit: BoxFit.fill,
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return Row(
+              children: [
+                SizedBox(
+                  width: constraints.maxWidth*.2,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Image.asset(
+                      widget.cartCoffee.coffee.image,
+                      height: 72,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            const SizedBox(width: 10),
-            Expanded(
-              child: FittedBox(
-                fit: BoxFit.scaleDown,
-                alignment: Alignment.centerLeft,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(
-                      widget.cartCoffee.coffee.filter,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      widget.cartCoffee.coffee.title,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      "₹${widget.cartCoffee.coffee.price}",
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            ColoredBox(
-              color: const Color(0xff463D46),
-              child: Row(
-                children: [
-                  _buildButton(
-                      icon: Icons.remove,
-                      onTap: () {
-                        setState(() {
-                          if (widget.cartCoffee.quantity > 0) {
-                            --widget.cartCoffee.quantity;
-                            if (widget.cartCoffee.quantity == 0) {
-                              cartCoffee.remove(widget.cartCoffee);
-                            }
-                              widget.setState();
-                          }
-                        });
-                      }),
-                  SizedBox(
-                    height: 30,
-                    width: 30,
-                    child: Center(
-                      child: Text(
-                        widget.cartCoffee.quantity.toString(),
-                        style:
-                            const TextStyle(color: Colors.white, fontSize: 20),
+                SizedBox(
+                  width: constraints.maxWidth*.5,
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 5),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            widget.cartCoffee.coffee.filter,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            widget.cartCoffee.coffee.title,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            "₹${widget.cartCoffee.coffee.price}",
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                  _buildButton(
-                      icon: Icons.add,
-                      onTap: () {
-                        setState(() {
-                          ++widget.cartCoffee.quantity;
-                          widget.setState();
-                        });
-                      }),
-                ],
-              ),
-            ),
-          ],
+                ),
+                SizedBox(
+                  width: constraints.maxWidth*.3,
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    alignment: Alignment.centerRight,
+                    child: Container(
+                      clipBehavior: Clip.antiAlias,
+                      decoration: BoxDecoration(
+                      color: const Color(0xff463D46),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Row(
+                        children: [
+                          _buildButton(
+                              icon: Icons.remove,
+                              onTap: () {
+                                setState(() {
+                                  if (widget.cartCoffee.quantity > 0) {
+                                    --widget.cartCoffee.quantity;
+                                    if (widget.cartCoffee.quantity == 0) {
+                                      cartCoffee.remove(widget.cartCoffee);
+                                    }
+                                      widget.setState();
+                                  }
+                                });
+                              }),
+                          SizedBox(
+                            height: 30,
+                            width: 30,
+                            child: Center(
+                              child: Text(
+                                widget.cartCoffee.quantity.toString(),
+                                style:
+                                    const TextStyle(color: Colors.white, fontSize: 20),
+                              ),
+                            ),
+                          ),
+                          _buildButton(
+                              icon: Icons.add,
+                              onTap: () {
+                                setState(() {
+                                  ++widget.cartCoffee.quantity;
+                                  widget.setState();
+                                });
+                              }),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          }
         ),
       ),
     );

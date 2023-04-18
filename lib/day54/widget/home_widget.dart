@@ -45,8 +45,8 @@ class HomeWidget extends StatelessWidget {
             itemCount: coffees.length,
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 300,
               crossAxisSpacing: 6.0,
               mainAxisSpacing: 6.0,
               mainAxisExtent: 250,
