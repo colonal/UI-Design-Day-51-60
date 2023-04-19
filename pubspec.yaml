@@ -66,6 +66,16 @@ flutter:
     - assets/images/day58/nike/
     - assets/images/day59/
     - assets/images/day60/
+    - screenshot/day51/1.png
+    - screenshot/day52/1.png
+    - screenshot/day53/1.png
+    - screenshot/day54/1.png
+    - screenshot/day55/1.png
+    - screenshot/day56/1.png
+    - screenshot/day57/1.png
+    - screenshot/day58/1.png
+    - screenshot/day59/1.png
+    - screenshot/day60/1.png
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
