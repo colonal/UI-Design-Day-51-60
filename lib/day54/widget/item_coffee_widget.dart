@@ -26,62 +26,81 @@ class ItemCoffeeWidget extends StatelessWidget {
             padding: const EdgeInsets.all(10.0),
             child: Stack(
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      height: 111,
-                      alignment: Alignment.topCenter,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        image: DecorationImage(
-                          image: AssetImage(coffee.image),
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                    ),
-                    Text(
-                      coffee.title,
-                      style: const TextStyle(color: Color(0xffefe3c8), fontSize: 20),
-                    ),
-                    Container(
-                      height: 40,
-                      // padding: const EdgeInsets.symmetric(horizontal: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: const Color(0xFF463D46),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(),
-                          Text(
-                            "\$${coffee.price}",
-                            style: const TextStyle(
-                              color: Color(0xffefe3c8),
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          height: constraints.maxHeight *.5,
+                          alignment: Alignment.topCenter,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            image: DecorationImage(
+                              image: AssetImage(coffee.image),
+                              fit: BoxFit.fill,
                             ),
                           ),
-                          Container(
-                            height: 40,
-                            width: 40,
-                            decoration: BoxDecoration(
-                              color: const Color(0xffefe3c8),
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: const Center(
-                              child: Icon(
-                                Icons.add,
-                                color: Color(0xff1C161E),
+                        ),
+                        SizedBox(
+                          height: constraints.maxHeight *.3,
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            alignment: Alignment.bottomLeft,
+                            child: SizedBox(
+                              height: constraints.maxHeight *.3,
+                              width: constraints.maxWidth,
+                              child: Center(
+                                child: Text(
+                                  coffee.title,
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 2,
+                                  style: const TextStyle(color: Color(0xffefe3c8), fontSize: 20),
+                                ),
                               ),
                             ),
                           ),
-                        ],
-                      ),
-                    )
-                  ],
+                        ),
+                        Container(
+                          height: constraints.maxHeight *.2,
+                          
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: const Color(0xFF463D46),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(),
+                              Text(
+                                "\$${coffee.price}",
+                                style: const TextStyle(
+                                  color: Color(0xffefe3c8),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Container(
+                                height: 40,
+                                width: 40,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xffefe3c8),
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                child: const Center(
+                                  child: Icon(
+                                    Icons.add,
+                                    color: Color(0xff1C161E),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    );
+                  }
                 ),
                 ClipRRect(
                   borderRadius: const BorderRadius.only(topLeft: Radius.circular(10),bottomRight: Radius.circular(10)),
