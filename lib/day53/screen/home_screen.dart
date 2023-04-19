@@ -31,7 +31,8 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: const Color(0xff474C72),
       body: SafeArea(child: widgetOptions.elementAt(_selectedIndex).child),
       bottomNavigationBar: SizedBox(
-        height: 90,
+        height: 85,
+        width: MediaQuery.of(context).size.width,
         child: Column(
           children: [
             Container(
@@ -40,17 +41,21 @@ class _HomeScreenState extends State<HomeScreen> {
               color: Colors.white30,
             ),
             Expanded(
-              child: BottomNavigationBar(
-                currentIndex: _selectedIndex,
-                items: widgetOptions
-                    .map((e) => e.bottomNavigationBarItem)
-                    .toList(),
-                onTap: _onItemTapped,
-                type: BottomNavigationBarType.fixed,
-                backgroundColor: const Color(0xff474C72),
-                selectedItemColor: Colors.white,
-                unselectedItemColor: Colors.grey,
-                elevation: 0,
+              child: Center(
+                child: BottomNavigationBar(
+                  selectedFontSize: 0.0,
+                  unselectedFontSize: 0.0,
+                  currentIndex: _selectedIndex,
+                  items: widgetOptions
+                      .map((e) => e.bottomNavigationBarItem)
+                      .toList(),
+                  onTap: _onItemTapped,
+                  type: BottomNavigationBarType.fixed,
+                  backgroundColor: const Color(0xff474C72),
+                  selectedItemColor: Colors.white,
+                  unselectedItemColor: Colors.grey,
+                  elevation: 0,
+                ),
               ),
             ),
           ],

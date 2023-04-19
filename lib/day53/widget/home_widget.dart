@@ -232,37 +232,39 @@ class HomeWidget extends StatelessWidget {
     );
   }
 
-  Padding _buildClassification(Size size,
+  Widget _buildClassification(Size size,
       {required String text, required IconData icon}) {
-    return Padding(
-      padding: const EdgeInsets.all(12.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Icon(
-                icon,
-                color: Colors.white,
-              ),
-              SizedBox(width: size.width * .2),
-              const Icon(
-                Icons.arrow_forward,
-                color: Colors.white,
-              ),
-            ],
-          ),
-          const SizedBox(height: 10),
-          Text(
-            text,
-            style: const TextStyle(
-              fontSize: 16,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
+    return SizedBox(
+      width: size.width*.5,
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Icon(
+                  icon,
+                  color: Colors.white,
+                ),
+                const Icon(
+                  Icons.arrow_forward,
+                  color: Colors.white,
+                ),
+              ],
             ),
-          ),
-        ],
+            const SizedBox(height: 10),
+            Text(
+              text,
+              style: const TextStyle(
+                fontSize: 16,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -39,7 +39,6 @@ class DetailsScreen extends StatelessWidget {
           width: size.width,
           height: size.height,
           child: Stack(
-            // alignment: Alignment.bottomCenter,
             children: [
               SingleChildScrollView(
                 padding: const EdgeInsets.only(top: 30),
@@ -71,7 +70,6 @@ class DetailsScreen extends StatelessWidget {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      // Center()
                                       Center(
                                         child: SizedBox(
                                           height: 250 * .72,
@@ -82,20 +80,19 @@ class DetailsScreen extends StatelessWidget {
                                           ),
                                         ),
                                       ),
-                                      Expanded(
-                                        child: FittedBox(
+                                      SizedBox(
+                                        width: size.width * .8 * .6,
+                                        height: 250 * .28,
+                                        child: const FittedBox(
                                           fit: BoxFit.fill,
-                                          child: SizedBox(
-                                            width: size.width * .8 * .7,
-                                            child: const Padding(
-                                              padding: EdgeInsets.all(10.0),
-                                              child: Text(
-                                                "Mobile App Design & Development",
-                                                maxLines: 2,
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.white,
-                                                ),
+                                          child: Padding(
+                                            padding: EdgeInsets.all(10.0),
+                                            child: Text(
+                                              "Mobile App Design &\nDevelopment",
+                                              maxLines: 2,
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white,
                                               ),
                                             ),
                                           ),
@@ -110,10 +107,10 @@ class DetailsScreen extends StatelessWidget {
                               alignment: Alignment.bottomRight,
                               child: SizedBox(
                                 height: 64,
-                                width: 84,
+                                width: size.width * .2,
                                 child: BuildBoxWidget(
                                   height: 64,
-                                  width: 84,
+                                  width: size.width * .2,
                                   colors: const [
                                     Color(0x8887A4C6),
                                     Color(0x6687A4C6),
@@ -172,18 +169,34 @@ class DetailsScreen extends StatelessWidget {
                                   fontWeight: FontWeight.bold),
                             ),
                             const SizedBox(height: 20),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                _buildDetailsWidget(
-                                    text: "Total Screen",
-                                    value: "28 - 40",
-                                    icon: Icons.chat_bubble),
-                                _buildDetailsWidget(
-                                    text: "Delivery Time",
-                                    value: "20-25 Days",
-                                    icon: Icons.access_time_filled),
-                              ],
+                            LayoutBuilder(
+                              builder: (context,constraints) {
+                                return Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      child: SizedBox(
+                                        width: constraints.maxWidth*.5,
+                                        child: _buildDetailsWidget(
+                                            text: "Total Screen",
+                                            value: "28 - 40",
+                                            icon: Icons.chat_bubble),
+                                      ),
+                                    ),
+                                    FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      child: SizedBox(
+                                        width: constraints.maxWidth*.5,
+                                        child: _buildDetailsWidget(
+                                            text: "Delivery Time",
+                                            value: "20-25 Days",
+                                            icon: Icons.access_time_filled),
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              }
                             ),
                           ],
                         ),
@@ -291,47 +304,51 @@ class DetailsScreen extends StatelessWidget {
     );
   }
 
-  Row _buildDetailsWidget(
+  Widget _buildDetailsWidget(
       {required String text, required String value, required IconData icon}) {
-    return Row(
-      children: [
-        BuildBoxWidget(
-          height: 40,
-          width: 40,
-          colors: const [
-            Color(0x8887A4C6),
-            Color(0x6687A4C6),
-            Color(0xff867FCE),
-          ],
-          alignment: Alignment.center,
-          child: Icon(
-            icon,
-            color: const Color(0xff91abba),
-            size: 20,
+    return FittedBox(
+      fit: BoxFit.scaleDown,
+      alignment: Alignment.centerLeft,
+      child: Row(
+        children: [
+          BuildBoxWidget(
+            height: 40,
+            width: 40,
+            colors: const [
+              Color(0x8887A4C6),
+              Color(0x6687A4C6),
+              Color(0xff867FCE),
+            ],
+            alignment: Alignment.center,
+            child: Icon(
+              icon,
+              color: const Color(0xff91abba),
+              size: 20,
+            ),
           ),
-        ),
-        const SizedBox(width: 10),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              text,
-              style: const TextStyle(
-                fontSize: 12,
-                color: Colors.white,
+          const SizedBox(width: 10),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                text,
+                style: const TextStyle(
+                  fontSize: 12,
+                  color: Colors.white,
+                ),
               ),
-            ),
-            const SizedBox(height: 5),
-            Text(
-              value,
-              style: const TextStyle(
-                fontSize: 12,
-                color: Colors.white70,
+              const SizedBox(height: 5),
+              Text(
+                value,
+                style: const TextStyle(
+                  fontSize: 12,
+                  color: Colors.white70,
+                ),
               ),
-            ),
-          ],
-        )
-      ],
+            ],
+          )
+        ],
+      ),
     );
   }
 

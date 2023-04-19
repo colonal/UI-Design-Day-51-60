@@ -33,23 +33,26 @@ final List<NavigationBarModel> widgetOptions = <NavigationBarModel>[
   NavigationBarModel(
     child: const HomeWidget(),
     bottomNavigationBarItem: BottomNavigationBarItem(
-        icon: Container(
-          padding: const EdgeInsets.all(14),
-          decoration: BoxDecoration(
-            color: const Color(0xff4FCBED),
-            shape: BoxShape.circle,
-            boxShadow: [
-              BoxShadow(
-                offset: const Offset(0, 6),
-                blurRadius: 10,
-                spreadRadius: 8,
-                color: const Color(0xff4FCBED).withOpacity(.2),
-              ),
-            ],
-          ),
-          child: const Icon(
-            FontAwesomeIcons.briefcase,
-            size: 28,
+        icon: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Container(
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: const Color(0xff4FCBED),
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  offset: const Offset(0, 6),
+                  blurRadius: 10,
+                  spreadRadius: 8,
+                  color: const Color(0xff4FCBED).withOpacity(.2),
+                ),
+              ],
+            ),
+            child: const Icon(
+              FontAwesomeIcons.briefcase,
+              size: 28,
+            ),
           ),
         ),
         label: ""),

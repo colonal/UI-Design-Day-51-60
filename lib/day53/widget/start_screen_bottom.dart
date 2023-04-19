@@ -22,25 +22,31 @@ class StartScreenBottom extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Expanded(
-              child: Text(
-                "Grow your\nbusiness with Zomo",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  height: 1.2,
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  "Grow your\nbusiness with Zomo",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    height: 1.2,
+                  ),
                 ),
               ),
             ),
             const Expanded(
-              child: Padding(
-                padding: EdgeInsets.only(top: 20),
-                child: Text(
-                  "You will get more selling order and will be benefitted, 500 million daily active users.",
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 191, 191, 193),
-                    fontSize: 16,
-                    fontWeight: FontWeight.w300,
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Padding(
+                  padding: EdgeInsets.only(top: 20),
+                  child: Text(
+                    "You will get more selling order and will be benefitted,\n500 million daily active users.",
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 191, 191, 193),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w300,
+                    ),
                   ),
                 ),
               ),
