@@ -4,8 +4,8 @@ import 'package:ui_design_day_51_60/day60/widget/pokemon_widget.dart';
 
 import '../data/data.dart';
 
-class StartScreenDay90 extends StatelessWidget {
-  const StartScreenDay90({super.key});
+class StartScreenDay60 extends StatelessWidget {
+  const StartScreenDay60({super.key});
 
   @override
   Widget build(BuildContext context) {
