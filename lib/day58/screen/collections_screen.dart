@@ -59,7 +59,7 @@ class _CollectionsScreenState extends State<CollectionsScreen> {
                     _selectShose(),
                     const SizedBox(height: 20),
                     SizedBox(
-                      height: 100,
+                      height: size.height*.35,
                       child: Transform.translate(
                           offset: const Offset(0, 20),
                           child: Image.asset(
