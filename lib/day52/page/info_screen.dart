@@ -77,28 +77,42 @@ class InfoScreen extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 50),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Flexible(
-                            child: Text(
-                              item.subject,
-                              style: TextStyle(
-                                fontSize: 32,
-                                color: color,
+                      LayoutBuilder(
+                        builder: (context,constraints) {
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SizedBox(
+                                width: constraints.maxWidth *.6,
+                                child: FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    item.subject,
+                                    style: TextStyle(
+                                      fontSize: 32,
+                                      color: color,
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
-                          Flexible(
-                            child: Text(
-                              item.time,
-                              style: const TextStyle(
-                                fontSize: 14,
-                                color: Color(0xff5C5C5C),
+                              SizedBox(
+                                width: constraints.maxWidth *.4,
+                                child: FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    item.time,
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                      color: Color(0xff5C5C5C),
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
-                        ],
+                            ],
+                          );
+                        }
                       ),
                       const SizedBox(height: 20),
                       Row(
@@ -134,66 +148,69 @@ class InfoScreen extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 20),
-                      SizedBox(
-                        height: 50,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Transform.translate(
-                              offset: Offset(
-                                  -(imageFace.length > 3
-                                          ? 3
-                                          : imageFace.length) *
-                                      15,
-                                  0),
-                              child: Directionality(
-                                textDirection: TextDirection.rtl,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    if (imageFace.length > 3)
-                                      CircleAvatar(
-                                        radius: 20,
-                                        backgroundColor: Colors.black,
-                                        child: Text(
-                                          "+${imageFace.length - 3}",
-                                          style: const TextStyle(
-                                              fontSize: 20,
-                                              color: Colors.white),
+                      FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: SizedBox(
+                          height: 50,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Transform.translate(
+                                offset: Offset(
+                                    -(imageFace.length > 3
+                                            ? 3
+                                            : imageFace.length) *
+                                        15,
+                                    0),
+                                child: Directionality(
+                                  textDirection: TextDirection.rtl,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      if (imageFace.length > 3)
+                                        CircleAvatar(
+                                          radius: 20,
+                                          backgroundColor: Colors.black,
+                                          child: Text(
+                                            "+${imageFace.length - 3}",
+                                            style: const TextStyle(
+                                                fontSize: 20,
+                                                color: Colors.white),
+                                          ),
                                         ),
-                                      ),
-                                    ...imageFace
-                                        .asMap()
-                                        .entries
-                                        .map(
-                                          (entry) {
-                                            int idx = entry.key + 1;
-                                            String val = entry.value;
-                                            return Transform.translate(
-                                              offset: Offset(idx * 15, 0),
-                                              child: CircleAvatar(
-                                                radius: 20,
-                                                backgroundImage:
-                                                    NetworkImage(val),
-                                              ),
-                                            );
-                                          },
-                                        )
-                                        .take(3)
-                                        .toList()
-                                  ],
+                                      ...imageFace
+                                          .asMap()
+                                          .entries
+                                          .map(
+                                            (entry) {
+                                              int idx = entry.key + 1;
+                                              String val = entry.value;
+                                              return Transform.translate(
+                                                offset: Offset(idx * 15, 0),
+                                                child: CircleAvatar(
+                                                  radius: 20,
+                                                  backgroundImage:
+                                                      NetworkImage(val),
+                                                ),
+                                              );
+                                            },
+                                          )
+                                          .take(3)
+                                          .toList()
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                            const Text(
-                              "See all",
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Color(0xff5C5C5C),
+                              const Text(
+                                "See all",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Color(0xff5C5C5C),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                       const SizedBox(height: 20),

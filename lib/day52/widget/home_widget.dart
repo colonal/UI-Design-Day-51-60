@@ -44,33 +44,36 @@ class HomeWidget extends StatelessWidget {
               style: TextStyle(fontSize: 24, color: color),
             ),
             const SizedBox(height: 15),
-            Row(
-              children: [
-                Text(
-                  "Fitness Studios",
-                  style: TextStyle(
-                    fontSize: 32,
-                    color: color,
-                    fontWeight: FontWeight.w800,
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Row(
+                children: [
+                  Text(
+                    "Fitness Studios",
+                    style: TextStyle(
+                      fontSize: 32,
+                      color: color,
+                      fontWeight: FontWeight.w800,
+                    ),
                   ),
-                ),
-                Transform.translate(
-                  offset: const Offset(-20, -23),
-                  child: Transform.rotate(
-                    angle: 70,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: size.width * .05),
-                      child: SizedBox(
-                        width: 40,
-                        height: 30,
-                        child: CustomPaint(
-                          painter: BeamCustomPainter(),
+                  Transform.translate(
+                    offset: const Offset(-20, -23),
+                    child: Transform.rotate(
+                      angle: 70,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: size.width * .05),
+                        child: SizedBox(
+                          width: 40,
+                          height: 30,
+                          child: CustomPaint(
+                            painter: BeamCustomPainter(),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             const SizedBox(height: 50),
             SizedBox(
@@ -130,57 +133,70 @@ class HomeWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
         ),
         padding: const EdgeInsets.all(8),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              height: 90,
-              width: 120,
-              margin: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                border: Border.all(color: color),
-                borderRadius: BorderRadius.circular(20),
-                image: DecorationImage(
-                  image: AssetImage(item.image),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+        child: LayoutBuilder(
+          builder: (context,constraints) {
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  item.subject,
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: color,
+                SizedBox(
+                  width: constraints.maxWidth *.3,
+                  child: Container(
+                    height: 90,
+                    width: 120,
+                    margin: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: color),
+                      borderRadius: BorderRadius.circular(20),
+                      image: DecorationImage(
+                        image: AssetImage(item.image),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
                 ),
-                const SizedBox(height: 10),
-                Text(
-                  item.time,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    color: Color(0xff5C5C5C),
+                SizedBox(
+                   width: constraints.maxWidth *.6,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        item.subject,
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: color,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        item.time,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: Color(0xff5C5C5C),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
+                SizedBox(
+                   width: constraints.maxWidth *.1,
+                  child: Align(
+                    alignment: Alignment.topCenter,
+                    child: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          item.isMark = !item.isMark;
+                        });
+                      },
+                      icon: Icon(
+                        item.isMark ? Icons.bookmark : Icons.bookmark_outline,
+                        color: color,
+                      ),
+                    ),
+                  ),
+                )
               ],
-            ),
-            Align(
-              alignment: Alignment.topCenter,
-              child: IconButton(
-                onPressed: () {
-                  setState(() {
-                    item.isMark = !item.isMark;
-                  });
-                },
-                icon: Icon(
-                  item.isMark ? Icons.bookmark : Icons.bookmark_outline,
-                  color: color,
-                ),
-              ),
-            )
-          ],
+            );
+          }
         ),
       ),
     );

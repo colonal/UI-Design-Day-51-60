@@ -3,8 +3,8 @@ import 'package:ui_design_day_51_60/day52/page/home_screen.dart';
 import '../widget/beam_custom_painter.dart';
 import '../widget/images_widget.dart';
 
-class Day52StareScreen extends StatelessWidget {
-  const Day52StareScreen({super.key});
+class StartScreenDay52 extends StatelessWidget {
+  const StartScreenDay52({super.key});
 
   @override
   Widget build(BuildContext context) {
